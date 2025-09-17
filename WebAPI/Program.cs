@@ -1,4 +1,12 @@
+﻿using Microsoft.EntityFrameworkCore;
+using WebAPI.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+// register (đăng ký) DB
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
+
 
 // Add services to the container.
 
