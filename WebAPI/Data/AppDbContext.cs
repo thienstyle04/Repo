@@ -18,7 +18,7 @@ namespace WebAPI.Data
             // có thể định nghĩa mối quan hệ giữa các table bằng Fluent API
 
             modelBuilder.Entity<Book_Author>()
-                .HasOne(b => b.Books)
+                .HasOne(b => b.Book)
                 .WithMany(ba => ba.Book_Authors)
                 .HasForeignKey(bi => bi.BookId);
 
@@ -26,11 +26,21 @@ namespace WebAPI.Data
                 .HasOne(a => a.Author)
                 .WithMany(ba => ba.Book_Authors)
                 .HasForeignKey(bi => bi.AuthorId);
+
+            // 🔑 composite key
+
+            modelBuilder.Entity<Book_Author>()
+                .HasKey(ba => new { ba.BookId, ba.AuthorId });
+
+            base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<Books> Books { get; set; }
         public DbSet<Authors> Authors { get; set; }
         public DbSet<Book_Author> Books_Authors { get; set; }
         public DbSet<Publishers> Publishers { get; set; }
+
+
+       
     }
 }

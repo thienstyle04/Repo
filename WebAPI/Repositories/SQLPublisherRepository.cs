@@ -1,4 +1,5 @@
-﻿using WebAPI.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using WebAPI.Data;
 using WebAPI.Models.Domain;
 using WebAPI.Models.DTO;
 
@@ -62,12 +63,23 @@ namespace WebAPI.Repositories
 
         public Publishers? DeletePublisherById(int id)
         {
-            var publisherDomain = _dbContext.Publishers.FirstOrDefault(p => p.Id == id);
-            if (publisherDomain != null)
+            // Load Publisher kèm theo Books
+            var publisherDomain = _dbContext.Publishers
+                                            .Include(p => p.Books)
+                                            .FirstOrDefault(p => p.Id == id);
+
+            if (publisherDomain == null) return null;
+
+            // Nếu còn sách tham chiếu thì báo lỗi
+            if (publisherDomain.Books != null && publisherDomain.Books.Any())
             {
-                _dbContext.Publishers.Remove(publisherDomain);
-                _dbContext.SaveChanges();
+                throw new Exception($"Cannot delete publisher {id} because there are books referencing it.");
             }
+
+            // Nếu không có sách thì xoá
+            _dbContext.Publishers.Remove(publisherDomain);
+            _dbContext.SaveChanges();
+
             return publisherDomain;
         }
     }

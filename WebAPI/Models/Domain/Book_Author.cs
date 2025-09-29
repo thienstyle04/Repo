@@ -5,9 +5,12 @@ namespace WebAPI.Models.Domain
     {
         [Key]
         public int Id { get; set; }
+
+        // 🔹 Foreign Key đến Book
         public int BookId { get; set; }
-        // mo ta : mot quyen sach co nhieu tac gia
-        public Books Books { get; set; }
+        public Books Book { get; set; }
+
+        // 🔹 Foreign Key đến Author
         public int AuthorId { get; set; }
         public Authors Author { get; set; }
     }

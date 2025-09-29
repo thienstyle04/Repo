@@ -141,6 +141,54 @@
         "tags": [
           "Book"
         ],
+        "parameters": [
+          {
+            "name": "filterOn",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filterQuery",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "isAscending",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 100
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -402,8 +450,16 @@
   "components": {
     "schemas": {
       "AddAuthorRequestDTO": {
+        "required": [
+          "id"
+        ],
         "type": "object",
         "properties": {
+          "id": {
+            "maxLength": 2147483647,
+            "type": "integer",
+            "format": "int32"
+          },
           "fullName": {
             "type": "string",
             "nullable": true
@@ -419,7 +475,7 @@
         "type": "object",
         "properties": {
           "title": {
-            "maxLength": 200,
+            "maxLength": 2147483647,
             "minLength": 1,
             "type": "string"
           },
