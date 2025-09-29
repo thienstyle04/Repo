@@ -39,10 +39,18 @@ namespace WebAPI.Controllers
 
         // POST: api/authors/add-authors
         [HttpPost("add-authors")]
+        [ValidateModel]
         public IActionResult AddAuthors([FromBody] AddAuthorRequestDTO addAuthorRequestDTO)
         {
-            var authorAdd = _authorRepository.AddAuthor(addAuthorRequestDTO);
-            return Ok(authorAdd);
+            //var authorAdd = _authorRepository.AddAuthor(addAuthorRequestDTO);
+            //return Ok(authorAdd);
+            if (ValidateAddAuthor(addAuthorRequestDTO))
+            {
+                var addAuthor = _authorRepository.AddAuthor(addAuthorRequestDTO);
+                return Ok(addAuthor);
+            }
+            else return BadRequest(ModelState);
+
         }
 
         // PUT: api/authors/update-authors-by-id/1
@@ -65,6 +73,20 @@ namespace WebAPI.Controllers
                 return NotFound($"Author with Id = {id} not found.");
 
             return Ok(deleteAuthor);
+        }
+
+        private bool ValidateAddAuthor(AddAuthorRequestDTO addAuthorRequestDTO)
+        {
+            if (string.IsNullOrWhiteSpace(addAuthorRequestDTO.FullName))
+            {
+                ModelState.AddModelError(nameof(addAuthorRequestDTO.FullName), "title khong duoc de trong!!!!!");
+            }
+            if (ModelState.ErrorCount > 0)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

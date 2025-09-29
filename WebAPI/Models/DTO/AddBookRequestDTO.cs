@@ -3,7 +3,7 @@
 public class AddBookRequestDTO
 {
     [Required]
-    [MaxLength(200)]
+    [MaxLength(int.MaxValue)]
     public string? Title { get; set; }
 
     public string? Description { get; set; }

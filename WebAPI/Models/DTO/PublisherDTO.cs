@@ -1,4 +1,5 @@
-﻿namespace WebAPI.Models.DTO
+﻿using System.ComponentModel.DataAnnotations;
+namespace WebAPI.Models.DTO
 {
     public class PublisherDTO
     {
