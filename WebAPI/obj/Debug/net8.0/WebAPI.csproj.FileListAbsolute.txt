@@ -138,3 +138,11 @@ D:\Program\Product\Web2\WebAPI\WebAPI\obj\Debug\net8.0\refint\WebAPI.dll
 D:\Program\Product\Web2\WebAPI\WebAPI\obj\Debug\net8.0\WebAPI.pdb
 D:\Program\Product\Web2\WebAPI\WebAPI\obj\Debug\net8.0\WebAPI.genruntimeconfig.cache
 D:\Program\Product\Web2\WebAPI\WebAPI\obj\Debug\net8.0\ref\WebAPI.dll
+D:\Program\Product\Web2\WebAPI\WebAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Program\Product\Web2\WebAPI\WebAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Program\Product\Web2\WebAPI\WebAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Program\Product\Web2\WebAPI\WebAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Program\Product\Web2\WebAPI\WebAPI\bin\Debug\net8.0\Microsoft.Bcl.TimeProvider.dll
+D:\Program\Product\Web2\WebAPI\WebAPI\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+D:\Program\Product\Web2\WebAPI\WebAPI\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+D:\Program\Product\Web2\WebAPI\WebAPI\bin\Debug\net8.0\Microsoft.Extensions.Options.dll

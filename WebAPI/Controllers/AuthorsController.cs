@@ -2,11 +2,13 @@
 using WebAPI.Data;
 using WebAPI.Repositories;
 using WebAPI.Models.DTO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class AuthorsController : ControllerBase
     {
         private readonly AppDbContext _dbContext;
